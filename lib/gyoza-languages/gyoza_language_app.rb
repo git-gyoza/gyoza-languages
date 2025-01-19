@@ -67,7 +67,7 @@ class GyozaLanguageApp < GyozaApp
 
   private def not_found(type, name)
     response(404, {
-      'message' => "Could not find #{type}: \"#{name}\""
+      'message' => "Could not find #{type}: #{name}"
     })
   end
 

@@ -15,19 +15,19 @@ RSpec.describe GyozaLanguageApp do
 
   it 'should return 404 on not existing repository' do
     expect(@app.call(prep_env('invalid'))).to eq(@app.response(404, {
-      'message' => 'Could not find repository: "invalid"',
+      'message' => 'Could not find repository: invalid',
     }))
   end
 
   it 'should return 404 on invalid repository' do
     expect(@app.call(prep_env('bin'))).to eq(@app.response(404, {
-      'message' => 'Could not find repository: "bin"',
+      'message' => 'Could not find repository: bin',
     }))
   end
 
   it 'should return 404 on invalid branch' do
     expect(@app.call(prep_env('', 'branch=invalid'))).to eq(@app.response(404, {
-      'message' => 'Could not find branch: "invalid"',
+      'message' => 'Could not find branch: invalid',
     }))
   end
 
