@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="https://img.shields.io/gem/v/gyoza-languages?color=aa0000" alt="">
+  <img src="https://img.shields.io/github/actions/workflow/status/git-gyoza/gyoza-languages/gem-push.yml?label=tests" alt="">
+</p>
+
 **gyoza-languages** is a simple interface that combines the 
 speed of [GitHub Linguist](https://github.com/github-linguist/linguist)
 with the highly efficient Ruby web server [Puma](https://github.com/puma/puma).
