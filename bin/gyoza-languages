@@ -73,6 +73,19 @@ def main(args)
     end
   end
 
+  repo_directory = nil
+  if parsed.include?('directory')
+    repo_directory = parsed['directory']
+  else
+    env_var_name = GyozaLanguages::REPOSITORIES_DIRECTORY_ENV_NAME
+    repo_directory = ENV[env_var_name]
+    if repo_directory == nil
+      puts("No repositories directory specified.")
+      puts("You can specify one by using --directory or by defining the environment variable: #{env_var_name}")
+      exit 1
+    end
+  end
+
 end
 
 main(ARGV)
