@@ -9,6 +9,13 @@ RSpec.describe GyozaApp do
     expect { GyozaApp.new 'invalid' }.to raise_error(GyozaError)
   end
 
+  it "is started after being started" do
+    app = GyozaApp.new '.'
+    app.handler = 'Mock value'
+    app.port = 8080
+    expect { app.start }.to raise_error(GyozaError)
+  end
+
   it "is stopped without the server actually running" do
     expect { GyozaApp.new('.').stop }.to raise_error(GyozaError)
   end
