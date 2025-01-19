@@ -35,25 +35,28 @@ def parse_arguments(parsed, args)
     usage
     exit 1
   end
-  if arg.start_with?('--')
-    if arg.length == 2
+
+  arg = arg.downcase
+  if arg == '-p'
+    arg = '--port'
+  elsif arg == '-d'
+    arg = '--directory'
+  else
+    unless arg == '--port' || arg == '--directory'
       puts("Invalid argument: #{arg}")
-    else
-      arg = arg[2]
+      exit 1
     end
   end
-  arg = arg.downcase
 
+  arg = arg[2..-1]
   unless parsed.has_key?(arg)
     parsed[arg] = args[1]
   end
-  parse_arguments(parsed, args[2, args.length])
+  parse_arguments(parsed, args[2..-1])
 end
 
 def main(args)
-  puts $PROGRAM_NAME
   parsed = {}
-
   parse_arguments(parsed, args)
   puts parsed
 end
