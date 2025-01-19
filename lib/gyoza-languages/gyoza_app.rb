@@ -12,7 +12,11 @@ class GyozaApp
   # Arguments:
   #   repo_directory: the location where all the repositories are stored
   def initialize(repo_directory)
-    @repo_directory = repo_directory
+    if File.directory?(repo_directory)
+      @repo_directory = repo_directory
+    else
+      raise GyozaError.invalidDirectory(repo_directory)
+    end
   end
 
   # Starts a new server at the specified port (9172 by default).

@@ -4,5 +4,9 @@
 class GyozaError < StandardError
   private_class_method :new
 
+  def self.invalidDirectory(directory)
+    return GyozaError.new("\"#{directory}\" is not a valid directory.")
+  end
+
 end
 
