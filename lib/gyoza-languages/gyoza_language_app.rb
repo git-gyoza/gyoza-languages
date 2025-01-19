@@ -20,7 +20,7 @@ class GyozaLanguageApp < GyozaApp
 
   # Checks in the repositories directory for the given repository
   # in the path. If found, uses GitHub linguist to compute the
-  # used languages and returns them in a JSON format.
+  # used languages and returns them in a Json format.
   # Otherwise, 404 'Not Found' is returned.
   #
   # Arguments:

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Represents a general error during the application execution
-class GyozaError < StandardError
+# Represents a general RuntimeError during the application execution
+class GyozaError < RuntimeError
 
   def self.invalidDirectory(directory)
     return GyozaError.new("\"#{directory}\" is not a valid directory.")

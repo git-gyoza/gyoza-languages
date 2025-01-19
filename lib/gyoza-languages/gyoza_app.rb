@@ -12,7 +12,7 @@ class GyozaApp
   attr_accessor :handler, :port
 
   # Starts a new server at the specified port
-  # using a Rackup Handler which is stored in the 'handler' attribute.
+  # using a Rackup handler which is stored in the 'handler' attribute.
   #
   # If the server is already running (A.K.A. the handler attribute is set),
   # a GyozaError is raised.
@@ -29,6 +29,20 @@ class GyozaApp
     end
   end
 
+  # Stops the server.
+  #
+  # If the server is not running (A.K.A. the handler attribute is not set),
+  # a GyozaError is raised.
+  def stop
+    if @handler == nil
+      raise GyozaError.serverNotStarted
+    else
+      @handler.stop
+      @handler = nil
+      @port = nil
+    end
+  end
+
   # The method invoked by Puma when receiving
   # an HTTP request.
   #
@@ -36,7 +50,7 @@ class GyozaApp
   # separate requests.
   # If the REQUEST_METHOD does not match any
   # of the previously mentioned methods,
-  # returns 405 "Method Not Allowed".
+  # returns the 405 HTTP status code.
   #
   # Arguments:
   #   env: the environment variables at the time of receiving the request
@@ -61,7 +75,7 @@ class GyozaApp
   end
 
   # The response to a GET request.
-  # By default, returns 405 "Method Not Allowed".
+  # By default, returns the 405 HTTP status code.
   #
   # Arguments:
   #   path: the path of the repository
@@ -72,7 +86,7 @@ class GyozaApp
   end
 
   # The response to a POST request.
-  # By default, returns 405 "Method Not Allowed".
+  # By default, returns the 405 HTTP status code.
   #
   # Arguments:
   #   path: the path of the repository
@@ -83,7 +97,7 @@ class GyozaApp
   end
 
   # The response to a PUT request.
-  # By default, returns 405 "Method Not Allowed".
+  # By default, returns the 405 HTTP status code.
   #
   # Arguments:
   #   path: the path of the repository
@@ -94,7 +108,7 @@ class GyozaApp
   end
 
   # The response to a PATCH request.
-  # By default, returns 405 "Method Not Allowed".
+  # By default, returns the 405 HTTP status code.
   #
   # Arguments:
   #   path: the path of the repository
@@ -105,7 +119,7 @@ class GyozaApp
   end
 
   # The response to a DELETE request.
-  # By default, returns 405 "Method Not Allowed".
+  # By default, returns the 405 HTTP status code.
   #
   # Arguments:
   #   path: the path of the repository
@@ -113,20 +127,6 @@ class GyozaApp
   #   env: the environment variables at the time of receiving the request
   def delete(path, query, env)
     [405, {}, []]
-  end
-
-  # Stops the server.
-  #
-  # If the server is not running (A.K.A. the handler attribute is not set),
-  # a GyozaError is raised.
-  def stop
-    if @handler == nil
-      raise GyozaError.serverNotStarted
-    else
-      @handler.stop
-      @handler = nil
-      @port = nil
-    end
   end
 
 end

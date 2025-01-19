@@ -3,7 +3,7 @@
 # A collection of utilities for strings.
 module StringUtils
 
-  # Converts the given query string to a Hash object.
+  # Converts the given query String to a Hash object.
   # A query string is identified by a set of
   # key-value pairs in the format "{key}={value}"
   # separated by the '&' character.
