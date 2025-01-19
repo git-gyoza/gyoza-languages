@@ -62,39 +62,58 @@ class GyozaApp
 
   # The response to a GET request.
   # By default, returns 405 "Method Not Allowed".
+  #
+  # Arguments:
+  #   path: the path of the repository
+  #   query: a hash containing all the query parameters
+  #   env: the environment variables at the time of receiving the request
   def get(path, query, env)
     [405, {}, []]
   end
 
   # The response to a POST request.
   # By default, returns 405 "Method Not Allowed".
+  #
+  # Arguments:
+  #   path: the path of the repository
+  #   query: a hash containing all the query parameters
+  #   env: the environment variables at the time of receiving the request
   def post(path, query, env)
     [405, {}, []]
   end
 
   # The response to a PUT request.
   # By default, returns 405 "Method Not Allowed".
+  #
+  # Arguments:
+  #   path: the path of the repository
+  #   query: a hash containing all the query parameters
+  #   env: the environment variables at the time of receiving the request
   def put(path, query, env)
     [405, {}, []]
   end
 
   # The response to a PATCH request.
   # By default, returns 405 "Method Not Allowed".
+  #
+  # Arguments:
+  #   path: the path of the repository
+  #   query: a hash containing all the query parameters
+  #   env: the environment variables at the time of receiving the request
   def patch(path, query, env)
     [405, {}, []]
   end
 
   # The response to a DELETE request.
   # By default, returns 405 "Method Not Allowed".
+  #
+  # Arguments:
+  #   path: the path of the repository
+  #   query: a hash containing all the query parameters
+  #   env: the environment variables at the time of receiving the request
   def delete(path, query, env)
     [405, {}, []]
   end
-
-  # Computes a get request
-  #
-  # Arguments:
-  #   env: the environment variables at the time of receiving the request
-  #def get(env)
 
   # Stops the server.
   #
