@@ -8,7 +8,8 @@ require 'linguist'
 # Works with rackup to start a new HTTP server.
 class GyozaApp
 
-  # Initializes the GyozaApp,
+  # Initializes the GyozaApp.
+  #
   # Arguments:
   #   repo_directory: the location where all the repositories are stored
   def initialize(repo_directory)
@@ -19,7 +20,14 @@ class GyozaApp
     end
   end
 
-  # Starts a new server at the specified port (9172 by default).
+  # Starts a new server at the specified port
+  # using a Rackup Handler which is stored in the 'handler' attribute.
+  #
+  # If the server is already running (A.K.A. the handler attribute is set),
+  # a GyozaError is raised.
+  #
+  # Arguments:
+  #   port: the port to start the server at (9172 by default)
   def start(port = 9172)
     if @handler == nil
       @handler = Rackup::Handler.default
@@ -31,9 +39,12 @@ class GyozaApp
   end
 
   # Stops the server.
+  #
+  # If the server is not running (A.K.A. the handler attribute is not set),
+  # a GyozaError is raised.
   def stop
     if @handler == nil
-      raise GyozaError.serverNotStarted()
+      raise GyozaError.serverNotStarted
     else
       @handler.stop
       @handler = nil
