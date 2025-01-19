@@ -81,7 +81,7 @@ class GyozaApp
   #   path: the path of the repository
   #   query: a hash containing all the query parameters
   #   env: the environment variables at the time of receiving the request
-  def get(path, query, env)
+  protected def get(path, query, env)
     status_code 405
   end
 
@@ -92,7 +92,7 @@ class GyozaApp
   #   path: the path of the repository
   #   query: a hash containing all the query parameters
   #   env: the environment variables at the time of receiving the request
-  def post(path, query, env)
+  protected def post(path, query, env)
     status_code 405
   end
 
@@ -103,7 +103,7 @@ class GyozaApp
   #   path: the path of the repository
   #   query: a hash containing all the query parameters
   #   env: the environment variables at the time of receiving the request
-  def put(path, query, env)
+  protected def put(path, query, env)
     status_code 405
   end
 
@@ -114,7 +114,7 @@ class GyozaApp
   #   path: the path of the repository
   #   query: a hash containing all the query parameters
   #   env: the environment variables at the time of receiving the request
-  def patch(path, query, env)
+  protected def patch(path, query, env)
     status_code 405
   end
 
@@ -125,7 +125,7 @@ class GyozaApp
   #   path: the path of the repository
   #   query: a hash containing all the query parameters
   #   env: the environment variables at the time of receiving the request
-  def delete(path, query, env)
+  protected def delete(path, query, env)
     status_code 405
   end
 
@@ -135,7 +135,7 @@ class GyozaApp
   # Arguments:
   #   code: the status code
   #   message: an optional message
-  def status_code(code, message = "")
+  protected def status_code(code, message = "")
     [code, {}, message.empty? ? [] : [message]]
   end
 
