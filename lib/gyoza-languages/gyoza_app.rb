@@ -70,7 +70,7 @@ class GyozaApp
     when "DELETE"
       delete(path, query, env)
     else
-      [405, {}, []]
+      status_code 405
     end
   end
 
@@ -82,7 +82,7 @@ class GyozaApp
   #   query: a hash containing all the query parameters
   #   env: the environment variables at the time of receiving the request
   def get(path, query, env)
-    [405, {}, []]
+    status_code 405
   end
 
   # The response to a POST request.
@@ -93,7 +93,7 @@ class GyozaApp
   #   query: a hash containing all the query parameters
   #   env: the environment variables at the time of receiving the request
   def post(path, query, env)
-    [405, {}, []]
+    status_code 405
   end
 
   # The response to a PUT request.
@@ -104,7 +104,7 @@ class GyozaApp
   #   query: a hash containing all the query parameters
   #   env: the environment variables at the time of receiving the request
   def put(path, query, env)
-    [405, {}, []]
+    status_code 405
   end
 
   # The response to a PATCH request.
@@ -115,7 +115,7 @@ class GyozaApp
   #   query: a hash containing all the query parameters
   #   env: the environment variables at the time of receiving the request
   def patch(path, query, env)
-    [405, {}, []]
+    status_code 405
   end
 
   # The response to a DELETE request.
@@ -126,7 +126,17 @@ class GyozaApp
   #   query: a hash containing all the query parameters
   #   env: the environment variables at the time of receiving the request
   def delete(path, query, env)
-    [405, {}, []]
+    status_code 405
+  end
+
+  # Returns the given status code with a message
+  # in the Rackup expected format.
+  #
+  # Arguments:
+  #   code: the status code
+  #   message: an optional message
+  def status_code(code, message = "")
+    [code, {}, message.empty? ? [] : [message]]
   end
 
 end
