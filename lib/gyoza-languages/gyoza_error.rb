@@ -8,5 +8,13 @@ class GyozaError < StandardError
     return GyozaError.new("\"#{directory}\" is not a valid directory.")
   end
 
+  def self.serverAlreadyStarted(port)
+    return GyozaError.new("Server is already listening on port #{port}.")
+  end
+
+  def self.serverNotStarted
+    return GyozaError.new("Server has not been started yet.")
+  end
+
 end
 

@@ -21,13 +21,24 @@ class GyozaApp
 
   # Starts a new server at the specified port (9172 by default).
   def start(port = 9172)
-    @handler = Rackup::Handler.default
-    @handler.run(self)
+    if @handler == nil
+      @handler = Rackup::Handler.default
+      @port = port
+      @handler.run(self, :Port => port)
+    else
+      raise GyozaError.serverAlreadyStarted(port)
+    end
   end
 
   # Stops the server.
   def stop
-    @handler.stop
+    if @handler == nil
+      raise GyozaError.serverNotStarted()
+    else
+      @handler.stop
+      @handler = nil
+      @port = nil
+    end
   end
 
 end
