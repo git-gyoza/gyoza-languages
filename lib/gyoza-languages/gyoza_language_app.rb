@@ -35,7 +35,7 @@ class GyozaLanguageApp < GyozaApp
   protected def get(path, query, env)
     repository = "#{@repo_directory}/#{path}"
     unless File.directory?(repository)
-      #TODO: 404
+      return not_found("repository", path)
     end
 
     repo = Rugged::Repository.new(repository)
@@ -46,6 +46,12 @@ class GyozaLanguageApp < GyozaApp
     project = Linguist::Repository.new(repo, repo.head.target_id)
     languages = project.languages
     #TODO: return languages
+  end
+
+  private def not_found(type, name)
+    response(404, {
+      "message" => "Could not find #{type}: \"#{name}\""
+    })
   end
 
 end
