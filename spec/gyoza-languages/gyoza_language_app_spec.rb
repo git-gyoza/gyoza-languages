@@ -19,6 +19,12 @@ RSpec.describe GyozaLanguageApp do
     }))
   end
 
+  it 'should return 404 on invalid branch' do
+    expect(@app.call(prep_env('', 'branch=invalid'))).to eq(@app.response(404, {
+      'message' => 'Could not find branch: "invalid"',
+    }))
+  end
+
   def prep_env(path = '', query = '')
     return {
       'REQUEST_METHOD' => 'GET',

@@ -39,11 +39,17 @@ class GyozaLanguageApp < GyozaApp
     end
 
     repo = Rugged::Repository.new(repository)
+    target_id = repo.head.target_id
     if query.include? 'branch'
-      #TODO: change branch and handle error
+      branch = query['branch']
+      begin
+        target_id = repo.rev_parse_oid('branch')
+      rescue
+        return not_found('branch', branch)
+      end
     end
 
-    project = Linguist::Repository.new(repo, repo.head.target_id)
+    project = Linguist::Repository.new(repo, target_id)
     languages = project.languages
     #TODO: return languages
   end
