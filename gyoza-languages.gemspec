@@ -28,4 +28,15 @@ Gem::Specification.new do |spec|
   spec.bindir = "bin"
   spec.executables = spec.files.grep(%r{\Abin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+
+  spec.add_dependency "rake", "~> 13.0"
+  spec.add_dependency "erb", "~> 4.0.0"
+
+  spec.add_dependency "rspec", "~> 3.0"
+
+  spec.add_dependency "github-linguist", "~> 9.0.0"
+
+  spec.add_dependency "puma", "~> 6.5.0"
+  spec.add_dependency "rack", "~> 3.1.8"
+  spec.add_dependency "rackup", "~> 2.2.1"
 end
