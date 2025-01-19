@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rake'
+# require 'rake'
 
 require_relative 'lib/gyoza-languages/version'
 
@@ -20,9 +20,9 @@ Gem::Specification.new do |spec|
   spec.metadata['source_code_uri'] = 'https://github.com/git-gyoza/gyoza-languages'
 
   # Specify which files should be added to the gem when it is released.
-  spec.files = FileList['lib/**/*.rb',
-                        'bin/*',
-                        '[A-Z]*'].to_a
+  spec.files = Dir['lib/**/*.rb'] + Dir['bin/*']
+  spec.files += Dir['[A-Z]*']
+  spec.files.reject! { |fn| fn.include? "CVS" }
 
   spec.bindir = 'bin'
   spec.executables = spec.files.grep(%r{\Abin/}) { |f| File.basename(f) }
