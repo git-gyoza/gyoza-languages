@@ -44,7 +44,7 @@ class GyozaApp
   # The method invoked by Puma when receiving
   # an HTTP request.
   #
-  # Uses get, post, put and delete methods to
+  # Uses get, post, put, patch and delete methods to
   # separate requests.
   # If the REQUEST_METHOD does not match any
   # of the previously mentioned methods,
@@ -63,6 +63,8 @@ class GyozaApp
       post(path, query, env)
     when "PUT"
       put(path, query, env)
+    when "PATCH"
+      patch(path, query, env)
     when "DELETE"
       delete(path, query, env)
     else
@@ -85,6 +87,12 @@ class GyozaApp
   # The response to a PUT request.
   # By default, returns 405 "Method Not Allowed".
   def put(path, query, env)
+    [405, {}, []]
+  end
+
+  # The response to a PATCH request.
+  # By default, returns 405 "Method Not Allowed".
+  def patch(path, query, env)
     [405, {}, []]
   end
 
