@@ -21,6 +21,11 @@ class GyozaLanguageApp < GyozaApp
     end
   end
 
+  def start(port = GyozaLanguages::DEFAULT_PORT)
+    puts("Starting gyoza-languages server on port #{port} with repositories directory: #{@repo_directory}")
+    super
+  end
+
   # Checks in the repositories directory for the given repository
   # in the path. If found, uses GitHub linguist to compute the
   # used languages and returns them in a Json format.
