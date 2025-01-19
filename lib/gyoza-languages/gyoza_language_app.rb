@@ -41,10 +41,10 @@ class GyozaLanguageApp < GyozaApp
     repo = Rugged::Repository.new(repository)
     target_id = repo.head.target_id
     if query.include? 'branch'
-      branch = query['branch']
       begin
-        target_id = repo.rev_parse_oid('branch')
-      rescue
+        branch = query['branch']
+        target_id = repo.rev_parse_oid(branch)
+      rescue Rugged::ReferenceError
         return not_found('branch', branch)
       end
     end
