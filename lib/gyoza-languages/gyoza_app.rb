@@ -21,7 +21,7 @@ class GyozaApp
   # Arguments:
   #   port: the port to start the server at (9172 by default)
   def start(port = GyozaLanguages::DEFAULT_PORT)
-    if @handler == nil
+    if @handler.nil?
       @handler = Rackup::Handler.default
       @port = port
       @handler.run(self, :Port => port)
@@ -35,7 +35,7 @@ class GyozaApp
   # If the server is not running (A.K.A. the handler attribute is not set),
   # a GyozaError is raised.
   def stop
-    if @handler == nil
+    if @handler.nil?
       raise GyozaError.serverNotStarted
     else
       @handler.stop
@@ -154,7 +154,7 @@ class GyozaApp
     headers['Server'] = GyozaLanguages::SERVER_NAME
     headers['Date'] = Time.now.utc.strftime('%a, %d %b %Y %H:%M:%S GMT')
 
-    unless body == nil
+    unless body.nil?
       if body.is_a?(String)
         headers['Content-Type'] = 'text/plain'
       else
