@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# require 'rake'
-
 require_relative 'lib/gyoza-languages/version'
 
 Gem::Specification.new do |spec|
