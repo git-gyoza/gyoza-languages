@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 # A collection of utilities for strings.
-class StringUtils
-  private_class_method :new
+module StringUtils
 
   # Converts the given query string to a Hash object.
   # A query string is identified by a set of
