@@ -73,7 +73,6 @@ def main(args)
     end
   end
 
-  repo_directory = nil
   if parsed.include?('directory')
     repo_directory = parsed['directory']
   else
