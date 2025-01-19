@@ -20,7 +20,7 @@ class GyozaApp
   #
   # Arguments:
   #   port: the port to start the server at (9172 by default)
-  def start(port = 9172)
+  def start(port = GyozaLanguages::DEFAULT_PORT)
     if @handler == nil
       @handler = Rackup::Handler.default
       @port = port
