@@ -1,3 +1,36 @@
 #!/usr/bin/env ruby
 
 require 'gyoza-languages'
+
+def usage
+  binary_name = GyozaLanguages::SPEC_NAME
+  env_var_name = GyozaLanguages::REPOSITORIES_DIRECTORY_ENV_NAME
+
+  puts(
+"#{binary_name} #{GyozaLanguages::VERSION}
+#{GyozaLanguages::SPEC_DESCRIPTION}.
+
+Usage: #{binary_name} [options]
+
+    -p, --port PORT                 Starts the server with the specified port.
+    -d, --directory DIRECTORY       Manually specifies the repositories directory.
+    -h, --help                      Show this message
+
+If the -d argument is not specified, a #{env_var_name} environment variable will be necessary.")
+end
+
+def main(args)
+  puts $PROGRAM_NAME
+  port = nil
+  directory = nil
+
+  if args.length > 0
+    arg = args[0]
+    if arg == '--help' || arg == '-h'
+      usage
+      return
+    end
+  end
+end
+
+main(ARGV)
