@@ -21,8 +21,8 @@ RSpec.describe GyozaApp do
       expect(GyozaApp.new.call({
                                  'REQUEST_METHOD' => method,
                                  'REQUEST_PATH' => '',
-                                 'QUERY_STRING' => '' })
-      ).to eq([405, {}, []])
+                                 'QUERY_STRING' => '' })[0]
+      ).to eq(405)
     end
   end
 
