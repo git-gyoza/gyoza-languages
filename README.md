@@ -62,3 +62,34 @@ An example is: `/myrepositories/super_awesome_repo?branch=dev` (if not existing,
 message will be returned).
 
 # API
+
+**gyoza-languages** also provides an **API** for general purposes and one to interact with
+the server started by the application itself.
+
+After importing the module using `require 'gyoza-languages'`, two core classes are available:
+
+- [GyozaApp](../main/lib/gyoza-languages/gyoza_app.rb).
+  This class offers five different methods that correspond to the **HTTP request methods**:
+  
+  - `get(path, query, env)`;
+  - `post(path, query, env)`;
+  - `put(path, query, env)`;
+  - `patch(path, query, env)`;
+  - `delete(path, query, env)`.
+  
+  By overriding these methods, it is possible to implement custom responses for each one
+  of the requests. The arguments passed are:
+
+  - `path`: the corresponding path in a string format;
+  - `query`: a hash that corresponds to the queried parameters;
+  - `env`: a hash comprehending all the current environment variables and more data.
+  
+  If the **HTTP method** is not among the listed above, by overriding the `call(env)`
+  function it is possible to access directly to the core responding function, and
+  retrieve the method with `env[REQUEST_METHOD]`;
+
+- [GyozaLanguageApp](../main/lib/gyoza-languages/gyoza_language_app.rb).
+  This class is the heart of the application. It extends
+  [GyozaApp](../main/lib/gyoza-languages/gyoza_app.rb) to provide support for
+  [GitHub Linguist](https://github.com/github-linguist/linguist) when a 
+  **GET request** is done to the server.
