@@ -123,5 +123,3 @@ class GyozaApp
   end
 
 end
-
-GyozaApp.new('.').start 10000
