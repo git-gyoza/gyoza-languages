@@ -20,3 +20,12 @@ module StringUtils
   end
 
 end
+
+class String
+
+  # Capitalizes every word of the given String.
+  def titleize
+    self.split("-").map(&:capitalize).join("-")
+  end
+
+end

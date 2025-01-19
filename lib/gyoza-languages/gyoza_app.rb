@@ -147,12 +147,12 @@ class GyozaApp
 
     actual_headers = {}
     headers.each do |key, value|
-      actual_headers[key.to_s.capitalize] = value
+      actual_headers[key.to_s.titleize] = value
     end
     headers = actual_headers
 
     headers["Server"] = GyozaLanguages::SERVER_NAME
-    headers["Date"] = now.format("%a, %d %b %Y %H:%M:%S GMT") #TODO: proper time zone
+    # headers["Date"] = now.format("%a, %d %b %Y %H:%M:%S GMT") #TODO: proper time zone
 
     #TODO: body
     [code, headers, body]
