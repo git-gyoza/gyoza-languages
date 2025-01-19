@@ -58,7 +58,21 @@ end
 def main(args)
   parsed = {}
   parse_arguments(parsed, args)
-  puts parsed
+
+  port = nil
+  if parsed.include?('port')
+    begin
+      port = parsed['port']
+      port = Integer(port)
+      if port < 1 || port > 65535
+        raise ArgumentError
+      end
+    rescue ArgumentError
+      puts("Invalid port \"#{port}\". Expected an integer between 1 and 65535")
+      exit 1
+    end
+  end
+
 end
 
 main(ARGV)
