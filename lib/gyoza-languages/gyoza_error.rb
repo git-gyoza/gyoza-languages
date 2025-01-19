@@ -15,5 +15,9 @@ class GyozaError < RuntimeError
     return GyozaError.new("Server has not been started yet.")
   end
 
+  def self.invalidStatusCode(code)
+    return GyozaError.new("Invalid status code #{code}. Expecting value between 100 and 599.")
+  end
+
 end
 
