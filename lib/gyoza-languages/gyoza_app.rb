@@ -7,6 +7,7 @@ require 'linguist'
 # The basic gyoza-languages app entry point.
 # Works with rackup to start a new HTTP server.
 class GyozaApp
+  attr_accessor :repo_directory, :handler, :port
 
   # Initializes the GyozaApp.
   #
