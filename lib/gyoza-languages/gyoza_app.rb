@@ -163,7 +163,7 @@ class GyozaApp
       end
     end
 
-    [code, headers, body]
+    [code, headers, body.nil? ? [] : [body]]
   end
 
 end
