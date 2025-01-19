@@ -25,6 +25,14 @@ RSpec.describe GyozaLanguageApp do
     }))
   end
 
+  ['', 'branch=main'].each do |query|
+    it "should return 200 on query #{query}" do
+      response = @app.call(prep_env('', query))
+      expect(response[0]).to eq 200
+      expect(response[2]).to include 'Ruby'
+    end
+  end
+
   def prep_env(path = '', query = '')
     return {
       'REQUEST_METHOD' => 'GET',

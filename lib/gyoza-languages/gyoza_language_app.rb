@@ -51,7 +51,8 @@ class GyozaLanguageApp < GyozaApp
 
     project = Linguist::Repository.new(repo, target_id)
     languages = project.languages
-    #TODO: return languages
+
+    response(200, languages)
   end
 
   private def not_found(type, name)
