@@ -9,4 +9,8 @@ RSpec.describe GyozaApp do
     expect { GyozaApp.new 'invalid' }.to raise_error(GyozaError)
   end
 
+  it "is stopped without the server actually running" do
+    expect { GyozaApp.new('.').stop }.to raise_error(GyozaError)
+  end
+
 end
