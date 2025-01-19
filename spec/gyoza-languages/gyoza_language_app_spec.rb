@@ -35,7 +35,7 @@ RSpec.describe GyozaLanguageApp do
     it "should return 200 on query #{query}" do
       response = @app.call(prep_env('', query))
       expect(response[0]).to eq 200
-      expect(response[2]).to include 'Ruby'
+      expect(response[2][0]).to include 'Ruby'
     end
   end
 
