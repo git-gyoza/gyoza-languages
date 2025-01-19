@@ -12,7 +12,7 @@ class GyozaError < RuntimeError
   end
 
   def self.serverNotStarted
-    return GyozaError.new("Server has not been started yet.")
+    return GyozaError.new('Server has not been started yet.')
   end
 
   def self.invalidStatusCode(code)

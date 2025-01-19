@@ -12,9 +12,9 @@ module StringUtils
   #   string: the string to convert
   def self.query_string_to_hash(string)
     dict = {}
-    string.split("&").map do |pair|
-      key, value = pair.split("=")
-      dict[key] = value.sub("+", " ")
+    string.split('&').map do |pair|
+      key, value = pair.split('=')
+      dict[key] = value.sub('+', ' ')
     end
     dict
   end
@@ -25,7 +25,7 @@ class String
 
   # Capitalizes every word of the given String.
   def titleize
-    self.split("-").map(&:capitalize).join("-")
+    self.split('-').map(&:capitalize).join('-')
   end
 
 end

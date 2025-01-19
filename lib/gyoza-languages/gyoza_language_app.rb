@@ -35,11 +35,11 @@ class GyozaLanguageApp < GyozaApp
   protected def get(path, query, env)
     repository = "#{@repo_directory}/#{path}"
     unless File.directory?(repository)
-      return not_found("repository", path)
+      return not_found('repository', path)
     end
 
     repo = Rugged::Repository.new(repository)
-    if query.include? "branch"
+    if query.include? 'branch'
       #TODO: change branch and handle error
     end
 
@@ -50,7 +50,7 @@ class GyozaLanguageApp < GyozaApp
 
   private def not_found(type, name)
     response(404, {
-      "message" => "Could not find #{type}: \"#{name}\""
+      'message' => "Could not find #{type}: \"#{name}\""
     })
   end
 

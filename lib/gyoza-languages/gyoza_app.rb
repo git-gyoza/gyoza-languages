@@ -56,19 +56,19 @@ class GyozaApp
   # Arguments:
   #   env: the environment variables at the time of receiving the request
   def call(env)
-    method = env["REQUEST_METHOD"]
-    path = env["REQUEST_PATH"]
-    query = StringUtils.query_string_to_hash(env["QUERY_STRING"])
+    method = env['REQUEST_METHOD']
+    path = env['REQUEST_PATH']
+    query = StringUtils.query_string_to_hash(env['QUERY_STRING'])
     case method
-    when "GET"
+    when 'GET'
       get(path, query, env)
-    when "POST"
+    when 'POST'
       post(path, query, env)
-    when "PUT"
+    when 'PUT'
       put(path, query, env)
-    when "PATCH"
+    when 'PATCH'
       patch(path, query, env)
-    when "DELETE"
+    when 'DELETE'
       delete(path, query, env)
     else
       response 405
@@ -151,15 +151,15 @@ class GyozaApp
     end
     headers = actual_headers
 
-    headers["Server"] = GyozaLanguages::SERVER_NAME
-    headers["Date"] = Time.now.utc.strftime("%a, %d %b %Y %H:%M:%S GMT")
+    headers['Server'] = GyozaLanguages::SERVER_NAME
+    headers['Date'] = Time.now.utc.strftime('%a, %d %b %Y %H:%M:%S GMT')
 
     unless body == nil
       if body.is_a?(String)
-        headers["Content-Type"] = "text/plain"
+        headers['Content-Type'] = 'text/plain'
       else
         body = JSON.dump(body)
-        headers["Content-Type"] = "application/json"
+        headers['Content-Type'] = 'application/json'
       end
     end
 

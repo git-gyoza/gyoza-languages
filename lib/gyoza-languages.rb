@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "gyoza-languages/version"
+require_relative 'gyoza-languages/version'
 
 module GyozaLanguages
   class Error < StandardError; end
