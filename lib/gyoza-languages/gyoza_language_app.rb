@@ -4,6 +4,19 @@ require_relative 'gyoza_app'
 
 # An implementation of GyozaApp that works with GitHub linguist.
 class GyozaLanguageApp < GyozaApp
+  attr_accessor :repo_directory
+
+  # Initializes the Gyoza Language App.
+  #
+  # Arguments:
+  #   repo_directory: the location where all the repositories are stored
+  def initialize(repo_directory)
+    if File.directory?(repo_directory)
+      @repo_directory = repo_directory
+    else
+      raise GyozaError.invalidDirectory(repo_directory)
+    end
+  end
 
   # Checks in the repositories directory for the given repository
   # in the path. If found, uses GitHub linguist to compute the

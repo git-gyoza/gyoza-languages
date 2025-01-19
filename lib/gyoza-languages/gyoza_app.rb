@@ -6,22 +6,10 @@ require 'linguist'
 
 require_relative './string_utils'
 
-# The basic gyoza-languages app entry point.
+# A wrapper for a web server.
 # Works with rackup to start a new HTTP server.
 class GyozaApp
-  attr_accessor :repo_directory, :handler, :port
-
-  # Initializes the GyozaApp.
-  #
-  # Arguments:
-  #   repo_directory: the location where all the repositories are stored
-  def initialize(repo_directory)
-    if File.directory?(repo_directory)
-      @repo_directory = repo_directory
-    else
-      raise GyozaError.invalidDirectory(repo_directory)
-    end
-  end
+  attr_accessor :handler, :port
 
   # Starts a new server at the specified port
   # using a Rackup Handler which is stored in the 'handler' attribute.
