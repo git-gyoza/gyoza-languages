@@ -7,7 +7,7 @@ def usage
   env_var_name = GyozaLanguages::REPOSITORIES_DIRECTORY_ENV_NAME
 
   puts(
-"#{binary_name} #{GyozaLanguages::VERSION}
+    "#{binary_name} #{GyozaLanguages::VERSION}
 #{GyozaLanguages::SPEC_DESCRIPTION}.
 
 Usage: #{binary_name} [options]
@@ -19,18 +19,43 @@ Usage: #{binary_name} [options]
 If the -d argument is not specified, a #{env_var_name} environment variable will be necessary.")
 end
 
-def main(args)
-  puts $PROGRAM_NAME
-  port = nil
-  directory = nil
+def parse_arguments(parsed, args)
+  if args.length == 0
+    return
+  end
 
-  if args.length > 0
-    arg = args[0]
-    if arg == '--help' || arg == '-h'
-      usage
-      return
+  arg = args[0]
+  if arg == '-h' || arg == '--help'
+    usage
+    exit 0
+  end
+
+  if args.length == 1
+    puts("You did not specify enough arguments for argument #{arg}")
+    usage
+    exit 1
+  end
+  if arg.start_with?('--')
+    if arg.length == 2
+      puts("Invalid argument: #{arg}")
+    else
+      arg = arg[2]
     end
   end
+  arg = arg.downcase
+
+  unless parsed.has_key?(arg)
+    parsed[arg] = args[1]
+  end
+  parse_arguments(parsed, args[2, args.length])
+end
+
+def main(args)
+  puts $PROGRAM_NAME
+  parsed = {}
+
+  parse_arguments(parsed, args)
+  puts parsed
 end
 
 main(ARGV)
