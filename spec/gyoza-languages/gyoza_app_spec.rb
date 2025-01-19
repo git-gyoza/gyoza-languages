@@ -32,7 +32,7 @@ RSpec.describe GyozaApp do
     end
   end
 
-  it 'should properly capitalize all headers in response method' do
+  it "should properly capitalize all headers in response method" do
     expected = {
       "Good" => "Luck",
       "Hello" => "World",
@@ -47,8 +47,15 @@ RSpec.describe GyozaApp do
       "GOOD" => "Luck",
     }
     actual = GyozaApp.new.response(100, nil, headers)[1]
-    actual.delete('Date')
+    actual.delete("Date")
     expect(actual).to eq(expected)
+  end
+
+  it "should provide the correct date with timezone in response method" do
+    headers = GyozaApp.new.response(100, nil, {})[1]
+    date = headers["Date"]
+    expected = Time.now.utc.strftime("%a, %d %b %Y %H:%M:%S GMT")
+    expect(date).to eq(expected)
   end
 
 end
