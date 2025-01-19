@@ -17,6 +17,10 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.3'
+    - name: Setup dependencies
+      run: |
+        gem install bundler
+        gem install rspec
     - name: Run tests
       run: rake spec
 
