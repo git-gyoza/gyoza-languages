@@ -38,7 +38,12 @@ class GyozaLanguageApp < GyozaApp
       return not_found('repository', path)
     end
 
-    repo = Rugged::Repository.new(repository)
+    begin
+      repo = Rugged::Repository.new(repository)
+    rescue Rugged::RepositoryError
+      return not_found('repository', path)
+    end
+
     target_id = repo.head.target_id
     if query.include? 'branch'
       begin
