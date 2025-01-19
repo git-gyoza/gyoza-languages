@@ -48,7 +48,7 @@ class GyozaApp
   # separate requests.
   # If the REQUEST_METHOD does not match any
   # of the previously mentioned methods,
-  # returns 405 Method not allowed.
+  # returns 405 "Method Not Allowed".
   #
   # Arguments:
   #   env: the environment variables at the time of receiving the request
@@ -68,6 +68,30 @@ class GyozaApp
     else
       [405, {}, []]
     end
+  end
+
+  # The response to a GET request.
+  # By default, returns 405 "Method Not Allowed".
+  def get(path, query, env)
+    [405, {}, []]
+  end
+
+  # The response to a POST request.
+  # By default, returns 405 "Method Not Allowed".
+  def post(path, query, env)
+    [405, {}, []]
+  end
+
+  # The response to a PUT request.
+  # By default, returns 405 "Method Not Allowed".
+  def put(path, query, env)
+    [405, {}, []]
+  end
+
+  # The response to a DELETE request.
+  # By default, returns 405 "Method Not Allowed".
+  def delete(path, query, env)
+    [405, {}, []]
   end
 
   # Computes a get request
