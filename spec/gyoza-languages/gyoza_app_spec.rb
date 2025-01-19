@@ -46,7 +46,9 @@ RSpec.describe GyozaApp do
       "remember-TO" => "Enjoy Yourselves",
       "GOOD" => "Luck",
     }
-    expect(GyozaApp.new.response(100, nil, headers)[1]).to eq(expected)
+    actual = GyozaApp.new.response(100, nil, headers)[1]
+    actual.delete('Date')
+    expect(actual).to eq(expected)
   end
 
 end

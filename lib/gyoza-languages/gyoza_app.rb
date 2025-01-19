@@ -152,7 +152,7 @@ class GyozaApp
     headers = actual_headers
 
     headers["Server"] = GyozaLanguages::SERVER_NAME
-    # headers["Date"] = now.format("%a, %d %b %Y %H:%M:%S GMT") #TODO: proper time zone
+    headers["Date"] = Time.now.strftime("%a, %d %b %Y %H:%M:%S GMT") #TODO: proper time zone
 
     #TODO: body
     [code, headers, body]
