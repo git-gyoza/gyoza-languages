@@ -154,7 +154,15 @@ class GyozaApp
     headers["Server"] = GyozaLanguages::SERVER_NAME
     headers["Date"] = Time.now.utc.strftime("%a, %d %b %Y %H:%M:%S GMT")
 
-    #TODO: body
+    unless body == nil
+      if body.is_a?(String)
+        headers["Content-Type"] = "text/plain"
+      else
+        body = JSON.dump(body)
+        headers["Content-Type"] = "application/json"
+      end
+    end
+
     [code, headers, body]
   end
 

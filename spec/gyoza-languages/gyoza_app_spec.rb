@@ -58,4 +58,16 @@ RSpec.describe GyozaApp do
     expect(date).to eq(expected)
   end
 
+  {
+    "nil" => "nil",
+    "Hello, World!" => "text/plain",
+    {1 => 2} => "application/json"
+  }.each do |body, expected|
+    it "should provide #{expected} content-type header based on #{body} body in response method" do
+      headers = GyozaApp.new.response(200, body == "nil" ? nil : body)[1]
+      actual = headers['Content-Type']
+      expect(actual).to eq expected == "nil" ? nil : expected
+    end
+  end
+
 end
