@@ -6,6 +6,24 @@ require_relative './gyoza_helper'
 
 RSpec.describe GyozaApp do
 
+  ['nil', 1234].each do |port|
+    it "should start with mock handler and port #{port}" do
+      app = GyozaApp.new
+      if port == 'nil'
+        app.start
+        port = GyozaLanguages::DEFAULT_PORT
+      else
+        app.start port
+      end
+
+      handler = app.handler
+      expect(handler).to_not be_nil
+      expect(handler.started).to eq(true)
+      expect(handler.caller).to eq(app)
+      expect(handler.port).to eq(port)
+    end
+  end
+
   it 'should raise error when is started after being started' do
     app = GyozaApp.new
     app.start
