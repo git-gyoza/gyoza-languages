@@ -65,6 +65,23 @@ class GyozaLanguageApp < GyozaApp
     response(200, languages)
   end
 
+  # Executes a GET response using get(path, query, env),
+  # but removes the returned body from the final response.
+  #
+  # Arguments:
+  #   path: the path of the repository
+  #   query: a hash of arguments. If the "branch" argument is specified, then
+  #          the languages will be looked for that particular branch. However,
+  #          if not found a 404 'Not Found' error is returned
+  #   env: the environment variables at the time of receiving the request
+  protected def head(path, query, env)
+    response = get(path, query, env)
+    headers = response[1]
+    headers.delete 'Content-Type'
+    response[2] = []
+    response
+  end
+
   private def not_found(type, name)
     response(404, {
       'message' => "Could not find #{type}: #{name}"
