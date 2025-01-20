@@ -45,6 +45,16 @@ RSpec.describe GyozaLanguageApp do
     end
   end
 
+  it 'should return no body on HEAD request' do
+    env = prep_env('')
+    env['REQUEST_METHOD'] = 'HEAD'
+    response = @app.call(env)
+    expect(response[0]).to eq 200
+    expect(response[1]).to_not include 'Content-Length'
+    expect(response[1]).to_not include 'Content-Type'
+    expect(response[2].length).to be 0
+  end
+
   def prep_env(path = '', query = '')
     return {
       'REQUEST_METHOD' => 'GET',
