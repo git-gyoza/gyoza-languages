@@ -13,8 +13,8 @@ module GyozaHelper
     end
 
     def run(caller, options = {})
-      if options.include? 'port'
-        @port = options['port']
+      if options.include? :Port
+        @port = options[:Port]
       end
       @started = true
       @caller = caller
