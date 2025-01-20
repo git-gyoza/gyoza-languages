@@ -36,4 +36,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'puma', '~> 6.5.0'
   spec.add_dependency 'rack', '~> 3.1.8'
   spec.add_dependency 'rackup', '~> 2.2.1'
+
+  spec.add_dependency 'simplecov', '~> 0.21.2'
 end
