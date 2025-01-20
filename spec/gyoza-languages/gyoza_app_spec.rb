@@ -2,13 +2,13 @@
 
 require 'gyoza-languages/gyoza_app'
 require 'gyoza-languages/gyoza_error'
+require_relative './gyoza_helper'
 
 RSpec.describe GyozaApp do
 
   it 'should raise error when is started after being started' do
     app = GyozaApp.new
-    app.handler = 'Mock value'
-    app.port = 8080
+    app.start
     expect { app.start }.to raise_error(GyozaError)
   end
 
