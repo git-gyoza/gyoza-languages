@@ -30,6 +30,18 @@ RSpec.describe GyozaApp do
     expect { app.start }.to raise_error(GyozaError)
   end
 
+  it 'should stop handler' do
+    app = GyozaApp.new
+    app.start
+    handler = app.handler
+    app.stop
+
+    expect(app.handler).to be_nil
+    expect(handler.started).to eq(false)
+    expect(handler.caller).to be_nil
+    expect(handler.port).to be_nil
+  end
+
   it 'should raise error when is stopped without the server actually running' do
     expect { GyozaApp.new.stop }.to raise_error(GyozaError)
   end
