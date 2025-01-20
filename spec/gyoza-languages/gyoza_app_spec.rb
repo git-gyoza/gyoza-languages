@@ -46,7 +46,7 @@ RSpec.describe GyozaApp do
     expect { GyozaApp.new.stop }.to raise_error(GyozaError)
   end
 
-  ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'SOMETHING_ELSE'].each do |method|
+  ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'SOMETHING_ELSE'].each do |method|
     it "should return 405 by default when requesting #{method}" do
       expect(GyozaApp.new.call({
                                  'REQUEST_METHOD' => method,

@@ -70,6 +70,8 @@ class GyozaApp
       patch(path, query, env)
     when 'DELETE'
       delete(path, query, env)
+    when 'HEAD'
+      head(path, query, env)
     else
       response 405
     end
@@ -127,6 +129,17 @@ class GyozaApp
   #   query: a hash containing all the query parameters
   #   env: the environment variables at the time of receiving the request
   protected def delete(path, query, env)
+    response 405
+  end
+
+  # The response to a HEAD request.
+  # By default, returns the 405 HTTP status code.
+  #
+  # Arguments:
+  #   path: the path of the repository
+  #   query: a hash containing all the query parameters
+  #   env: the environment variables at the time of receiving the request
+  protected def head(path, query, env)
     response 405
   end
 
