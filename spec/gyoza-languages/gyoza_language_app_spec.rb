@@ -2,11 +2,17 @@
 
 require 'gyoza-languages/gyoza_language_app'
 require 'gyoza-languages/gyoza_error'
+require_relative './gyoza_helper'
 
 RSpec.describe GyozaLanguageApp do
 
   before(:each) do
     @app = GyozaLanguageApp.new '.'
+  end
+
+  it 'should call start method from super' do
+    @app.start
+    expect(@app.handler).to_not be_nil
   end
 
   it 'is initialized with an invalid repositories directory' do
