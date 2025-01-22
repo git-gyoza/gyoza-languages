@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module GyozaLanguages
-  VERSION = '1.0.4'
+  VERSION = '1.0.5'
   # The content sent as the HTTP Server header
   SERVER_NAME = "Gyoza-Languages/#{VERSION}"
   DEFAULT_PORT = 2015
