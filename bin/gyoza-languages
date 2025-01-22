@@ -12,7 +12,7 @@ def usage
 
 Usage: #{binary_name} [options]
 
-    -p, --port PORT                 Starts the server with the specified port.
+    -p, --port PORT                 Starts the server with the specified port (#{GyozaLanguages::DEFAULT_PORT} by default).
     -d, --directory DIRECTORY       Manually specifies the repositories directory.
     -h, --help                      Show this message
 

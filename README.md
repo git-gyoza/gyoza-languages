@@ -25,12 +25,14 @@ A Ruby implementation of the Github linguist project with an integrated simple H
 
 Usage: gyoza-languages [options]
 
-    -p, --port PORT                 Starts the server with the specified port.
+    -p, --port PORT                 Starts the server with the specified port (2015 by default).
     -d, --directory DIRECTORY       Manually specifies the repositories directory.
     -h, --help                      Show this message
 
 If the -d argument is not specified, a REPOSITORIES_DIRECTORY environment variable will be necessary.
 ```
+
+Specifying a port is optional as the default value is `2015`.
 
 The most important (and mandatory) parameter is the `--directory`:
 this represents the directory where all the repositories are stored.
